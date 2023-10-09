@@ -23,11 +23,11 @@
     state: present
 
 - name: Run scylla_setup script
-  command: sudo scylla_setup
-  args:
-    stdin: "\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\n"  # Provide your answers here
-  register: scylla_setup_output
+  command: scylla_setup
   become: yes
+  args:
+    stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\n"  # Provide your answers here
+  register: scylla_setup_output
 - debug:
     var: scylla_setup_output.stdout_lines
 # - name: Enable ScyllaDB Server service
