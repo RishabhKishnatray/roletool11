@@ -29,6 +29,9 @@
     stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\n"  # Provide your answers here
   register: scylla_setup_output
   ignore_errors: yes
+- name: Wait for system initialization
+  wait_for:
+    timeout: 60 
 - name: Run scylla
   command: scylla_setup
   become: yes
