@@ -27,6 +27,8 @@
   become: yes
   args:
     stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\n"  # Provide your answers here
+  retries: 2
+  delay: 2
   register: scylla_setup_output
 - debug:
     var: scylla_setup_output.stdout_lines
