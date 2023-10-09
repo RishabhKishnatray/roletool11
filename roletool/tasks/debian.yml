@@ -25,7 +25,7 @@
 - name: Run scylla_setup script
   command: sudo scylla_setup
   args:
-    stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\n"  # Provide your answers here
+    stdin: "\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\n"  # Provide your answers here
   register: scylla_setup_output
   become: yes
 - debug:
