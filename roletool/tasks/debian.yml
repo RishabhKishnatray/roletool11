@@ -22,39 +22,39 @@
     name: scylla
     state: present
     
-- name: Run scylla_setup with "yes" responses
-  command: echo yes | sudo scylla_setup
-  register: setup_result
+# - name: Run scylla_setup with "yes" responses
+#   command: echo yes | sudo scylla_setup
+#   register: setup_result
 
-- name: Display scylla_setup output
-  debug:
-    var: setup_result.stdout_lines
-
-# - name: Runscylla_setupscript
-#   shell: scylla_setup
-#   register: scylla_setup_output
-#   private: false
-# - name: Print a message
+# - name: Display scylla_setup output
 #   debug:
-#       msg: 'output {{ scylla_setup_output.stdout }}'
+#     var: setup_result.stdout_lines
 
-# - name: Run scylla_setup script
-#   shell: scylla_setup
-#   become: yes
-#   args:
-#     stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"  # Provide your answers here
-#   register: scylla_setup_output
-#   ignore_errors: yes
-# - name: Wait for system initialization
+- name: Runscylla_setupscript
+  shell: scylla_setup
+  register: scylla_setup_output
+  private: false
+- name: Print a message
+  debug:
+      msg: 'output {{ scylla_setup_output.stdout }}'
 
-# - name: Run scylla
-#   command: scylla_setup
-#   become: yes
-#   args:
-#     stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"  # Provide your answers here
-#   register: scylla_setup_output
-# - debug:
-#     var: scylla_setup_output.stdout_lines
+- name: Run scylla_setup script
+  shell: scylla_setup
+  become: yes
+  args:
+    stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"  # Provide your answers here
+  register: scylla_setup_output
+  ignore_errors: yes
+
+
+- name: Run scylla
+  command: scylla_setup
+  become: yes
+  args:
+    stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"  # Provide your answers here
+  register: scylla_setup_output
+- debug:
+    var: scylla_setup_output.stdout_lines
 
 
 # - name: Enable ScyllaDB Server service
