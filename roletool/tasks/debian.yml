@@ -26,7 +26,7 @@
   shell: scylla_setup
   become: yes
   args:
-    stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\YES\nyes"  # Provide your answers here
+    stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"  # Provide your answers here
   register: scylla_setup_output
 #   ignore_errors: yes
 # - name: Wait for system initialization
