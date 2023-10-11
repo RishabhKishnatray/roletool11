@@ -24,33 +24,8 @@
 
 
 - name: Run scylla_setup
-  expect:
-    command: sudo scylla_setup
-    responses:
-      - "Do you want to run check your kernel version?\n": "YES\n"
-      - "Do you want to verify the ScyllaDB packages are installed?\n": "YES\n"
-      - "Do you want the Scylla server service to automatically start when the Scylla node boots?\n": "YES\n"
-      - "Do you want to enable Scylla to check if there is a newer version of Scylla available?\n": "YES\n"
-      - "Do you want to setup Network Time Protocol(NTP) to auto-synchronize the current time on the node?\n": "YES\n"
-      - "Do you want to setup RAID and XFS?\n": "YES\n"
-      - "Are you sure you want to setup RAID and XFS?\n": "YES\n"
-      - "Do you want to change RAID level to RAID5?\n": "yes\n"
-      - "Enable XFS online discard?\n": "YES\n"
-      - "Do you want to enable coredumps?\n": "YES\n"
-      - "Do you want to setup a system-wide customized configuration for Scylla?\n": "YES\n"
-      - "Do you want to enable Network Interface Card (NIC) and disk(s) optimization?\n": "yes\n"
-      - "The clocksource is the physical device that Linux uses to take time measurements. In most cases Linux chooses the fastest available clocksource device...\n": "yes\n"
-      - "Do you want IOTune to study your disks IO profile and adapt Scylla to it?\n": "YES\n"
-      - "Do you want to set the CPU scaling governor to Performance level on boot?\n": "YES\n"
-      - "Do you want to configure swapfile?\n": "YES\n"
-      - "Do you want to enable fstrim service?\n": "yes\n"
-      - "Will Scylla be the only service on this host?\n": "YES\n"
-      - "Do you want to create swapfile on the root directory?\n": "YES\n"
-      - "Do you want to auto configure swap size?\n": "YES\n"
-      - "Do you want to configure rsyslog to send log to a remote repository?\n": "YES\n"
-      - "ip:port>\n": "yes\n"
-      become: yes
-      become_user: root
+ command: yes | sudo scylla_setup
+
 
 
 
