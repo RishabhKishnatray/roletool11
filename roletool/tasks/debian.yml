@@ -22,24 +22,81 @@
     name: scylla
     state: present
 
-- name: Run scylla_setup script
-  shell: scylla_setup
-  become: yes
-  args:
-    stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\n"  # Provide your answers here
-  register: scylla_setup_output
-  ignore_errors: yes
-- name: Wait for system initialization
-  wait_for:
-    timeout: 60 
-- name: Run scylla
-  command: scylla_setup
-  become: yes
-  args:
-    stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES"  # Provide your answers here
-  register: scylla_setup_output
-- debug:
-    var: scylla_setup_output.stdout_lines
+
+- name: Run Scylla Setup
+  expect:
+    command: /path/to/scylla_setup_command.sh  # Replace with the actual path
+    responses:
+          'Do you want to run check your kernel version?':
+            - 'YES'
+          'This is a supported kernel version.':
+            - 'YES'
+          'Do you want to verify the ScyllaDB packages are installed?':
+            - 'YES'
+          'Do you want the Scylla server service to automatically start when the Scylla node boots?':
+            - 'YES'
+          'Do you want to enable Scylla to check if there is a newer version of Scylla available?':
+            - 'YES'
+          'Do you want to setup Network Time Protocol(NTP) to auto-synchronize the current time on the node?':
+            - 'YES'
+          'Do you want to setup RAID and XFS?':
+            - 'YES'
+          'Are you sure you want to setup RAID and XFS?':
+            - 'YES'
+          'Do you want to change RAID level to RAID5?':
+            - 'yes'
+          'Enable XFS online discard?':
+            - 'YES'
+          'Do you want to enable coredumps?':
+            - 'YES'
+          'Do you want to setup a system-wide customized configuration for Scylla?':
+            - 'YES'
+          'Do you want to enable Network Interface Card (NIC) and disk(s) optimization?':
+            - 'yes'
+          'The clocksource is the physical device that Linux uses to take time measurements.':
+            - 'yes'
+          'Do you want IOTune to study your disks IO profile and adapt Scylla to it?':
+            - 'YES'
+          'Do you want to set the CPU scaling governor to Performance level on boot?':
+            - 'YES'
+          'This computer doesn''t supported CPU scaling configuration.':
+            - 'YES'
+          'Do you want to configure swapfile?':
+            - 'YES'
+          'Do you want to enable fstrim service?':
+            - 'yes'
+          'Will Scylla be the only service on this host?':
+            - 'YES'
+          'Do you want to create swapfile on root directory?':
+            - 'YES'
+          'Do you want to auto configure swap size?':
+            - 'YES'
+          'Do you want to configure rsyslog to send log to a remote repository?':
+            - 'YES'
+          'Please input rsyslog remote server, use ip:port format.':
+            - 'ip:port'
+            - 'yes'
+
+    
+
+# - name: Run scylla_setup script
+#   shell: scylla_setup
+#   become: yes
+#   args:
+#     stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\n"  # Provide your answers here
+#   register: scylla_setup_output
+#   ignore_errors: yes
+# - name: Wait for system initialization
+#   wait_for:
+#     timeout: 60 
+# - name: Run scylla
+#   command: scylla_setup
+#   become: yes
+#   args:
+#     stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES"  # Provide your answers here
+#   register: scylla_setup_output
+# - debug:
+#     var: scylla_setup_output.stdout_lines
 
 
 # - name: Enable ScyllaDB Server service
