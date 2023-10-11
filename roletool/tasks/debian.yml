@@ -24,7 +24,7 @@
 
 
 - name: Run scylla_setup
- command: yes | sudo scylla_setup
+  command: yes | sudo scylla_setup
 
 
 
