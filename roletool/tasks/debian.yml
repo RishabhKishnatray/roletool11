@@ -30,21 +30,21 @@
 #   debug:
 #     var: setup_result.stdout_lines
 
-- name: Runscylla_setupscript
-  shell: scylla_setup
-  register: scylla_setup_output
-  private: false
-- name: Print a message
-  debug:
-      msg: 'output {{ scylla_setup_output.stdout }}'
+# - name: Runscylla_setupscript
+#   shell: scylla_setup
+#   register: scylla_setup_output
+#   private: false
+# - name: Print a message
+#   debug:
+#       msg: 'output {{ scylla_setup_output.stdout }}'
 
-- name: Run scylla_setup script
-  shell: scylla_setup
-  become: yes
-  args:
-    stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"  # Provide your answers here
-  register: scylla_setup_output
-  ignore_errors: yes
+# - name: Run scylla_setup script
+#   shell: scylla_setup
+#   become: yes
+#   args:
+#     stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"  # Provide your answers here
+#   register: scylla_setup_output
+#   ignore_errors: yes
 
 
 - name: Run scylla
