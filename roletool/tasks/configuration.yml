@@ -13,6 +13,6 @@
 - name: Create Scylla Users
   cqlsh:
     login_host: localhost
-    login_user: admin_username
-    login_password: admin_password
+    login_user:  cassandra
+    login_password:  cassandra
     statement: "CREATE ROLE 'new_user' WITH PASSWORD = 'password' AND LOGIN = true"
