@@ -36,3 +36,12 @@
 - debug:
     var: scylla_setup_output.stdout_lines
 
+- name: Enable ScyllaDB Server service
+  systemd:
+    name: scylla-server
+    enabled: yes
+
+- name: Start ScyllaDB Service
+  systemd:
+     name: scylla-server
+     state: started
