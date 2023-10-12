@@ -7,8 +7,8 @@
     group: ubuntu
     mode: '0644'
   become: true
-#  notify:
-#    - Reload systemd
+  notify:
+    - Reload systemd
 
 # - name: Enable ScyllaDB Server service
 #   systemd:
