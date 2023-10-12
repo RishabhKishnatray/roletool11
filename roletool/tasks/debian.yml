@@ -13,56 +13,22 @@
     dest: "{{ scylla_repo_dest }}"
   become: yes
 
-- name: Update apt cache
-  apt:
-    update_cache: yes
+# - name: Update apt cache
+#   apt:
+#     update_cache: yes
 
 - name: Install scylla
   apt:
+    update_cache: yes
     name: scylla
     state: present
-    
-# - name: Run scylla_setup with "yes" responses
-#   command: echo yes | sudo scylla_setup
-#   register: setup_result
-
-# - name: Display scylla_setup output
-#   debug:
-#     var: setup_result.stdout_lines
-
-# - name: Runscylla_setupscript
-#   shell: scylla_setup
-#   register: scylla_setup_output
-#   private: false
-# - name: Print a message
-#   debug:
-#       msg: 'output {{ scylla_setup_output.stdout }}'
-
-# - name: Run scylla_setup script
-#   shell: scylla_setup
-#   become: yes
-#   args:
-#     stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"  # Provide your answers here
-#   register: scylla_setup_output
-#   ignore_errors: yes
-
 
 - name: Run scylla
   command: scylla_setup
   become: yes
   args:
-    stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"  # Provide your answers here
+    stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"
   register: scylla_setup_output
 - debug:
     var: scylla_setup_output.stdout_lines
 
-
-# - name: Enable ScyllaDB Server service
-#   systemd:
-#     name: scylla-server
-#     enabled: yes
-
-# - name: Start ScyllaDB Service
-#   systemd:
-#      name: scylla-server
-#      state: started
