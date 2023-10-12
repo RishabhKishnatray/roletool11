@@ -2,11 +2,9 @@
 - name: Update apt cache
   apt:
     update_cache: yes
-
 # - name: Import ScyllaDB GPG Key
 #   command: "{{ scylla_gpg }}"
 #   become: yes
-  
 - name: Import ScyllaDB GPG Key
   apt_key:
     data: "{{ scylla_gpg }}"
