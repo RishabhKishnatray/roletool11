@@ -11,7 +11,7 @@
     - Reload systemd
 
 - name: Create Scylla Users
-  cqlsh:
+  community.cassandra.cqlsh:
     login_host: localhost
     login_user:  cassandra
     login_password:  cassandra
