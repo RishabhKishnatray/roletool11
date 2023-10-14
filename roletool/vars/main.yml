@@ -13,7 +13,11 @@ templ:
 #scylla_repo: "wget -O /etc/apt/sources.list.d/scylla.list http://downloads.scylladb.com/deb/debian/scylla-5.2.list"
 templl:
   - scylla.yml.j2
-  
+
+gpg_key_needed:
+    - "{{ not ('d0a112e067426ab2' | keyring(path='/etc/apt/keyrings/scylladb.gpg') }}"
+
+
 # templs:
 #   - cassandra-env.sh.j2
 #   - jvm-clients.options.j2
