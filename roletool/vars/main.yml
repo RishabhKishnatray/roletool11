@@ -14,10 +14,7 @@ templ:
 templl:
   - scylla.yml.j2
 
-gpg_key_needed:
-    - "{{ not ('d0a112e067426ab2' | keyring(path='/etc/apt/keyrings/scylladb.gpg') }}"
-
-
+gpg_key_needed: "{{ not ('d0a112e067426ab2' | keyring(path='/etc/apt/keyrings/scylladb.gpg')) }}"
 # templs:
 #   - cassandra-env.sh.j2
 #   - jvm-clients.options.j2
