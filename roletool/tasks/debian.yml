@@ -5,7 +5,6 @@
 - name: Import ScyllaDB GPG Key
   command: "{{ scylla_gpg }}"
   become: yes
-  when: gpg_key_needed
 - name: Add ScyllaDB Repository
   get_url:
     url: "{{ scylla_repo }}"
