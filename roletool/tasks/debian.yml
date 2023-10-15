@@ -27,7 +27,7 @@
   args:
     stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"
   register: scylla_setup_output
-  when: scylla_setup_output.rc != 0
+  
 - debug:
     var: scylla_setup_output.stdout_lines
 
