@@ -2,6 +2,7 @@
 - name: Update apt cache
   apt:
     update_cache: yes
+
 - name: Import ScyllaDB GPG Key
   command: "{{ scylla_gpg }}"
   changed_when: false
@@ -40,3 +41,4 @@
   systemd:
      name: scylla-server
      state: started
+...
