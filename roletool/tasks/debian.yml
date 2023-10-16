@@ -7,6 +7,7 @@
   command: dpkg -l | grep scylla
   register: scylla_installed
   changed_when: false
+  ignore_errors: true
 
 - name: Import ScyllaDB GPG Key
   command: "{{ scylla_gpg }}"
