@@ -3,15 +3,9 @@
   apt:
     update_cache: true
 
-# - name: Check if ScyllaDB is installed
-#   command: dpkg -l | grep scylla
-#   register: scylla_installed
-#   changed_when: false
-#   ignore_errors: true
-
 - name: Import ScyllaDB GPG Key
   command: "{{ scylla_gpg }}"
-  # when: scylla_installed.rc != 0
+  changed_when: false
 
 - name: Add ScyllaDB Repository
   get_url:
@@ -32,7 +26,6 @@
   args:
     stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"
   register: scylla_setup_output
-  changed_when: false
 
 - name: Enable ScyllaDB Server service
   systemd:
@@ -43,44 +36,4 @@
   systemd:
     name: scylla-server
     state: started
-# ---
-# - name: Update apt cache
-#   apt:
-#     update_cache: true
-
-# - name: Import ScyllaDB GPG Key
-#   command: "{{ scylla_gpg }}"
-#   changed_when: false
-
-# - name: Add ScyllaDB Repository
-#   get_url:
-#     url: "{{ scylla_repo }}"
-#     dest: "{{ scylla_repo_dest }}"
-
-# - name: Update apt cache
-#   apt:
-#     update_cache: true
-
-# - name: Install scylla
-#   apt:
-#     name: scylla
-#     state: present
-#     changed_when: false
-
-# - name: Run scylla
-#   command: scylla_setup
-#   args:
-#     stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"
-#   register: scylla_setup_output
-#   changed_when: false
-
-# - name: Enable ScyllaDB Server service
-#   systemd:
-#     name: scylla-server
-#     enabled: true
-
-# - name: Start ScyllaDB Service
-#   systemd:
-#     name: scylla-server
-#     state: started
-# ...
+...
