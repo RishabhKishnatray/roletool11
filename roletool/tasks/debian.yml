@@ -1,16 +1,18 @@
 ---
 - name: Update apt cache
   apt:
-    update_cache: true
+    update_cache: yes
 
 - name: Import ScyllaDB GPG Key
   command: "{{ scylla_gpg }}"
+  become: true
   changed_when: false
 
 - name: Add ScyllaDB Repository
   get_url:
     url: "{{ scylla_repo }}"
     dest: "{{ scylla_repo_dest }}"
+  become: true
 
 - name: Update apt cache
   apt:
@@ -18,17 +20,21 @@
 
 - name: Install scylla
   apt:
+    update_cache: true
     name: scylla
     state: present
-  failed_when: false
-
 
 - name: Run scylla
   command: scylla_setup
+  become: true
   args:
     stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"
   register: scylla_setup_output
   changed_when: false
+
+- debug:
+    var: scylla_setup_output.stdout_lines
+
 - name: Enable ScyllaDB Server service
   systemd:
     name: scylla-server
@@ -36,6 +42,49 @@
 
 - name: Start ScyllaDB Service
   systemd:
-    name: scylla-server
-    state: started
+     name: scylla-server
+     state: started
+
+
+
+
+# - name: Update apt cache
+#   apt:
+#     update_cache: true
+
+# - name: Import ScyllaDB GPG Key
+#   command: "{{ scylla_gpg }}"
+#   changed_when: false
+
+# - name: Add ScyllaDB Repository
+#   get_url:
+#     url: "{{ scylla_repo }}"
+#     dest: "{{ scylla_repo_dest }}"
+
+# - name: Update apt cache
+#   apt:
+#     update_cache: true
+
+# - name: Install scylla
+#   apt:
+#     name: scylla
+#     state: present
+#   failed_when: false
+
+
+# - name: Run scylla
+#   command: scylla_setup
+#   args:
+#     stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"
+#   register: scylla_setup_output
+#   changed_when: false
+# - name: Enable ScyllaDB Server service
+#   systemd:
+#     name: scylla-server
+#     enabled: true
+
+# - name: Start ScyllaDB Service
+#   systemd:
+#     name: scylla-server
+#     state: started
 ...
