@@ -4,3 +4,8 @@
   service:
     name: scylla-server
     state: restarted
+
+- name: Start ScyllaDB Service
+  systemd:
+    name: scylla-server
+    state: started
