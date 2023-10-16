@@ -9,17 +9,17 @@
   get_url:
     url: "{{ scylla_repo }}"
     dest: "{{ scylla_repo_dest }}"
-  become: yes
+  become: true
 
 - name: Install scylla
   apt:
-    update_cache: yes
+    update_cache: true
     name: scylla
     state: present
 
 - name: Run scylla
   command: scylla_setup
-  become: yes
+  become: true
   args:
     stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"
   register: scylla_setup_output
@@ -28,10 +28,10 @@
 - debug:
     var: scylla_setup_output.stdout_lines
 
-- name: Enable ScyllaDB Server service
-  systemd:
-    name: scylla-server
-    enabled: yes
+# - name: Enable ScyllaDB Server service
+#   systemd:
+#     name: scylla-server
+#     enabled: true
 
 - name: Start ScyllaDB Service
   systemd:
