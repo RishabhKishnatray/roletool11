@@ -18,7 +18,7 @@
 
 - name: Install scylla
   apt:
-    name: scylla
+    name: scylla-server
     state: present
 
 - name: Run scylla
