@@ -3,9 +3,10 @@
   apt:
     update_cache: true
 
-# - name: Import ScyllaDB GPG Key
-#   command: "{{ scylla_gpg }}"
-#   changed_when: false
+- name: Import ScyllaDB GPG Key
+  command: "{{ scylla_gpg }}"
+  changed_when: false
+    when: scyllagpg is not defined
 
 - name: Add ScyllaDB Repository
   get_url:
