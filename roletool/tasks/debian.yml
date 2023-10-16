@@ -5,17 +5,11 @@
 - name: Import ScyllaDB GPG Key
   command: "{{ scylla_gpg }}"
   become: yes
-
-
 - name: Add ScyllaDB Repository
   get_url:
     url: "{{ scylla_repo }}"
     dest: "{{ scylla_repo_dest }}"
   become: yes
-
-- name: Update apt cache
-  apt:
-    update_cache: yes
 
 - name: Install scylla
   apt:
@@ -43,8 +37,6 @@
   systemd:
      name: scylla-server
      state: started
-
-
 
 
 # - name: Update apt cache
