@@ -20,7 +20,7 @@
   apt:
     name: scylla
     state: present
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: Run scylla
   command: scylla_setup
