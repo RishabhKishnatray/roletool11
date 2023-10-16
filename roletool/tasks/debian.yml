@@ -11,7 +11,7 @@
   get_url:
     url: "{{ scylla_repo }}"
     dest: "{{ scylla_repo_dest }}"
-    changed_when: false
+
 - name: Update apt cache
   apt:
     update_cache: true
@@ -20,6 +20,7 @@
   apt:
     name: scylla
     state: present
+    changed_when: false
 
 - name: Run scylla
   command: scylla_setup
