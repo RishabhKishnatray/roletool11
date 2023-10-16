@@ -11,7 +11,7 @@
   get_url:
     url: "{{ scylla_repo }}"
     dest: "{{ scylla_repo_dest }}"
-
+    changed_when: false
 - name: Update apt cache
   apt:
     update_cache: true
