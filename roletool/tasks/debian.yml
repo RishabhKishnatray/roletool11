@@ -22,10 +22,10 @@
   apt:
     update_cache: true
 
-# - name: Install scylla
-#   apt:
-#     name: scylla
-#     state: present
+- name: Install scylla
+  apt:
+    name: scylla
+    state: present
 
 - name: Run scylla
   command: scylla_setup
