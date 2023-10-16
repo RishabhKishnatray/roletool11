@@ -5,7 +5,7 @@
 
 - name: Import ScyllaDB GPG Key
   command: "{{ scylla_gpg }}"
-  changed_when: false
+  # changed_when: false
 
 - name: Add ScyllaDB Repository
   get_url:
@@ -26,7 +26,7 @@
   args:
     stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"
   register: scylla_setup_output
-  changed_when: false
+  # changed_when: false
 
 - name: Enable ScyllaDB Server service
   systemd:
