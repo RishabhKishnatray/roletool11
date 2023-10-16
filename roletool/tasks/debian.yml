@@ -33,10 +33,10 @@
 #     name: scylla-server
 #     enabled: true
 
-- name: Start ScyllaDB Service
-  systemd:
-     name: scylla-server
-     state: started
+# - name: Start ScyllaDB Service
+#   systemd:
+#      name: scylla-server
+#      state: started
 
 
 # - name: Update apt cache
