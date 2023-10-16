@@ -20,7 +20,6 @@
   apt:
     name: scylla
     state: present
-  changed_when: false  # This is where 'changed_when' should be placed
 
 - name: Run scylla
   command: scylla_setup
