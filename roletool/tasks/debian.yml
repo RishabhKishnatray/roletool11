@@ -5,6 +5,8 @@
 - name: Import ScyllaDB GPG Key
   command: "{{ scylla_gpg }}"
   become: yes
+  changed_when: false
+  
 - name: Add ScyllaDB Repository
   get_url:
     url: "{{ scylla_repo }}"
@@ -27,7 +29,7 @@
   args:
     stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"
   register: scylla_setup_output
-  
+
 - debug:
     var: scylla_setup_output.stdout_lines
 
