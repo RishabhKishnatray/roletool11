@@ -29,7 +29,7 @@
   args:
     stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"
   register: scylla_setup_output
-  when: scylla_setup_output is not defined or scylla_setup_output.changed
+  notify: Start ScyllaDB Service
 - debug:
     var: scylla_setup_output.stdout_lines
 
