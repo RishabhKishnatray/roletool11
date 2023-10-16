@@ -11,7 +11,6 @@
 
 - name: Import ScyllaDB GPG Key
   command: "{{ scylla_gpg }}"
-  changed_when: false
   when: scylla_installed.rc != 0
 
 - name: Add ScyllaDB Repository
