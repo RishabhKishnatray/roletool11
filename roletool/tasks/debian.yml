@@ -23,14 +23,10 @@
 
 - name: Run scylla
   command: scylla_setup
-  become: yes
   args:
     stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"
   register: scylla_setup_output
   changed_when: false
-
-- debug:
-    var: scylla_setup_output.stdout_lines
 
 - name: Enable ScyllaDB Server service
   systemd:
