@@ -6,7 +6,7 @@
 - name: Check if ScyllaDB is installed
   command: dpkg -l | grep scylla
   register: scylla_installed
-  ignore_errors: true
+  changed_when: false
 
 - name: Import ScyllaDB GPG Key
   command: "{{ scylla_gpg }}"
