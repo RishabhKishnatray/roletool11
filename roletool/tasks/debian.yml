@@ -21,6 +21,7 @@
     name: scylla
     state: present
   ignore_errors: true
+  changed_when: false
 
 - name: Run scylla
   command: scylla_setup
