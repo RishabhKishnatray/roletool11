@@ -19,9 +19,9 @@
 - name: Install scylla
   apt:
     name: scylla
-    state: present
-  ignore_errors: true
-  changed_when: false
+      state: present
+  failed_when: false
+
 
 - name: Run scylla
   command: scylla_setup
