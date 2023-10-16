@@ -31,10 +31,10 @@
 - name: Enable ScyllaDB Server service
   systemd:
     name: scylla-server
-    enabled: yes
+    enabled: true
 
 - name: Start ScyllaDB Service
   systemd:
-     name: scylla-server
-     state: started
+    name: scylla-server
+    state: started
 ...
