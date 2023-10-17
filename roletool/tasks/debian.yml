@@ -22,7 +22,6 @@
     state: present
   failed_when: false
 
-
 - name: Run scylla
   command: scylla_setup
   args:
