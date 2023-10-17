@@ -5,7 +5,7 @@
 
 - name: Import ScyllaDB GPG Key
   command: "{{ scylla_gpg }}"
-  changed_when: false
+  # changed_when: false
 
 - name: Add ScyllaDB Repository
   get_url:
@@ -20,12 +20,12 @@
   apt:
     name: scylla
     state: present
-  failed_when: false
+  # failed_when: false
 
 - name: Run scylla
   command: scylla_setup
   args:
     stdin: "YES\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nyes\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nyes"
   register: scylla_setup_output
-  changed_when: false
+  # changed_when: false
 ...
