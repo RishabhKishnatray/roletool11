@@ -9,7 +9,7 @@
     state: directory
     mode: "0777"
   loop:
-    - /etc/apt/key
+    - /etc/apt/keyrings
     - /etc/scylla/cassandra
 
 - name: install java
