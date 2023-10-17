@@ -7,8 +7,8 @@ scylla_gpg: "gpg --homedir /tmp --no-default-keyring --keyring /etc/apt/keyrings
 # scylla_gpg: "gpg --homedir /tmp --no-default-keyring --keyring /etc/apt/keyrings/scylladb.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys d0a112e067426ab2"
 scylla_repo_dest: "/etc/apt/sources.list.d/scylla.list"
 templ:
-    - /etc/apt/keyrings
-    - /etc/scylla/cassandra
+  - /etc/apt/keyrings
+  - /etc/scylla/cassandra
 templl:
   - scylla.yml.j2
 
