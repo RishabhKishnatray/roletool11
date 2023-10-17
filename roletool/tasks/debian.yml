@@ -4,7 +4,7 @@
     update_cache: true
 
 - name: Import ScyllaDB GPG Key
-  command: "{{ scylla_gpg }}"
+  command: "{{ s_gpg }}"
   # changed_when: false
 
 - name: Add ScyllaDB Repository
