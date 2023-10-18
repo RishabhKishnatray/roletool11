@@ -9,9 +9,19 @@
   become: true
   notify:
     - Reload systemd
-- name: Create user in scylla
-  command: cqlsh -u cassandra -p cassandra '{{ scylladb_listen_ip }}' -e "CREATE USER '{{ username }}' WITH PASSWORD '{{ passwd }}' SUPERUSER;"
-  changed_when: false
+
+- name: Gather IP Address
+  setup:
+  register: target_host_info
+
+- name: Use Registered IP Address
+  debug:
+    msg: "The IP address of the target host is {{ target_host_info.ansible_facts.ansible_default_ipv4.address }}"
+
+
+# - name: Create user in scylla
+#   command: cqlsh -u cassandra -p cassandra '{{ scylladb_listen_ip }}' -e "CREATE USER '{{ username }}' WITH PASSWORD '{{ passwd }}' SUPERUSER;"
+#   changed_when: false
 # when: "user_exists.rc != 0"
 # - name: Create Scylla Users
 #   community.cassandra.cqlsh:
