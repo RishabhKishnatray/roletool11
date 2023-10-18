@@ -1,4 +1,8 @@
 ---
+- name: Gather IP Address
+  setup:
+  register: target_host_info
+
 - name: Configure service1
   template:
     src: scylla.yaml.j2
@@ -10,21 +14,21 @@
   notify:
     - Reload systemd
 
-- name: Gather IP Address
-  setup:
-  register: target_host_info
+# - name: Gather IP Address
+#   setup:
+#   register: target_host_info
 
-- name: Create user in Scylla
-  command: >
-    cqlsh -u cassandra -p cassandra '{{ target_host_info.ansible_facts.ansible_default_ipv4.address }}' -e
-    "CREATE USER '{{ username }}' WITH PASSWORD '{{ passwd }}' SUPERUSER;"
-  changed_when: false
+# - name: Create user in Scylla
+#   command: >
+#     cqlsh -u cassandra -p cassandra '{{ target_host_info.ansible_facts.ansible_default_ipv4.address }}' -e
+#     "CREATE USER '{{ username }}' WITH PASSWORD '{{ passwd }}' SUPERUSER;"
+#   changed_when: false
 
-- name: Create key in Scylla
-  command: >
-    cqlsh -u cassandra -p cassandra '{{ target_host_info.ansible_facts.ansible_default_ipv4.address }}' -e
-    "CREATE KEYSPACE {{ keyname }} WITH replication = {'class':'SimpleStrategy', 'replication_factor':3};"
-  changed_when: false
+# - name: Create key in Scylla
+#   command: >
+#     cqlsh -u cassandra -p cassandra '{{ target_host_info.ansible_facts.ansible_default_ipv4.address }}' -e
+#     "CREATE KEYSPACE {{ keyname }} WITH replication = {'class':'SimpleStrategy', 'replication_factor':3};"
+#   changed_when: false
 # - name: Create user in scylla
 #   command: cqlsh -u cassandra -p cassandra '{{ target_host_info.ansible_facts.ansible_default_ipv4.address }}' -e "CREATE USER '{{ username }}' WITH PASSWORD '{{ passwd }}' SUPERUSER;"
 #   changed_when: false
