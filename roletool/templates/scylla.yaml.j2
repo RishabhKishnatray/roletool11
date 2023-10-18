@@ -85,7 +85,8 @@ seed_provider:
           # In an existing cluster, specify the address of at least one existing node.
           # If you specify addresses of more than one node, use a comma to separate them.
           # For example: "<IP1>,<IP2>,<IP3>"
-          - seeds: "127.0.0.1"
+          - seeds: '{{ target_host_info.ansible_facts.ansible_default_ipv4.address }}'
+#"127.0.0.1"
 
 # Address to bind to and tell other Scylla nodes to connect to.
 # You _must_ change this if you want multiple nodes to be able to communicate!
@@ -211,7 +212,7 @@ endpoint_snitch: SimpleSnitch
 # you can specify which should be chosen using rpc_interface_prefer_ipv6. If false the first ipv4
 # address will be used. If true the first ipv6 address will be used. Defaults to false preferring
 # ipv4. If there is only one address it will be selected regardless of ipv4/ipv6.
-rpc_address: localhost
+rpc_address: '{{ target_host_info.ansible_facts.ansible_default_ipv4.address }}'
 # rpc_interface: eth1
 # rpc_interface_prefer_ipv6: false
 
