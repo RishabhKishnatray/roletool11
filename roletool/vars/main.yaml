@@ -12,4 +12,5 @@ templl:
 username: scylladb11
 passwd: password
 gpg_key_needed: "{{ not ('d0a112e067426ab2' | keyring(path='/etc/apt/keyrings/scylladb.gpg')) }}"
+scylladb_use_internal_ip: true
 scylladb_listen_ip: "{% if scylladb_use_internal_ip|bool %}{{ internal_ip }}{% else %}{{ ansible_default_ipv4.address }}{% endif %}"
