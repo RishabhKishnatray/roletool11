@@ -16,7 +16,7 @@
 
 - name: Use Registered IP Address
   debug:
-    msg: '{{ target_host_info.ansible_facts.ansible_default_ipv4.address }}'
+    msg: '{ target_host_info.ansible_facts.ansible_default_ipv4.address }'
 
 
 # - name: Create user in scylla
