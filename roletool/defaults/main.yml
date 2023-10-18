@@ -1,1 +1,3 @@
 ---
+scylladb_listen_ip: "{% if scylladb_use_internal_ip|bool %}{{ internal_ip }}{% else %}{{ ansible_default_ipv4.address }}{% endif %}"
+...
