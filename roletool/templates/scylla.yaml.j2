@@ -243,7 +243,8 @@ batch_size_fail_threshold_in_kb: 1024
 #   to authenticate in the same manner as PasswordAuthenticator, but improper credentials
 #   result in being logged in as an anonymous user. Use for upgrading clusters' auth.
 # authenticator: AllowAllAuthenticator
-
+authenticator: org.apache.cassandra.auth.PasswordAuthenticator
+authorizer: org.apache.cassandra.auth.CassandraAuthorizer
 # Authorization backend, implementing IAuthorizer; used to limit access/provide permissions
 # Out of the box, Scylla provides org.apache.cassandra.auth.{AllowAllAuthorizer,
 # CassandraAuthorizer}.
