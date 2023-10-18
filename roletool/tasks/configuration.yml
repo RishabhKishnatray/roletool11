@@ -11,7 +11,7 @@
     - Reload systemd
 - name: Create user in scylla
   command: cqlsh -u cassandra -p cassandra  -e "CREATE USER '{{ username }}' WITH PASSWORD '{{ passwd }}' SUPERUSER;"
-  # changed_when: false
+  changed_when: false
 # when: "user_exists.rc != 0"
 # - name: Create Scylla Users
 #   community.cassandra.cqlsh:
