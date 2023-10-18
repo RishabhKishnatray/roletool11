@@ -9,7 +9,6 @@
   become: true
   notify:
     - Reload systemd
-    
 - name: Create user in scylla
   command: cqlsh -u cassandra -p cassandra  -e "CREATE USER '{{ username }}' WITH PASSWORD '{{ passwd }}' SUPERUSER;"
   changed_when: false
