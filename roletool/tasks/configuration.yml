@@ -20,7 +20,7 @@
 
 - name: Create user in Scylla
   command: >
-    cqlsh -u cassandra -p cassandra '{{ target_host_info.ansible_facts.ansible_default_ipv4.address }}' -e 
+    cqlsh -u cassandra -p cassandra '{{ target_host_info.ansible_facts.ansible_default_ipv4.address }}' -e
     "CREATE USER '{{ username }}' WITH PASSWORD '{{ passwd }}' SUPERUSER;"
   changed_when: false
 
