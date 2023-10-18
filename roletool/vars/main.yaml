@@ -9,6 +9,6 @@ templ:
   - /etc/scylla/cassandra
 templl:
   - scylla.yml.j2
-username: scyllad1b20
+username: scylladb1
 passwd: password
 gpg_key_needed: "{{ not ('d0a112e067426ab2' | keyring(path='/etc/apt/keyrings/scylladb.gpg')) }}"
