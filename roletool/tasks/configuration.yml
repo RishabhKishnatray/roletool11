@@ -14,15 +14,15 @@
   notify:
     - Reload systemd
 
-- name: Create user in Scylla
-  command: >
-    cqlsh -u cassandra -p cassandra '{{ target_host_info.ansible_facts.ansible_default_ipv4.address }}' -e
-    "CREATE USER '{{ username }}' WITH PASSWORD '{{ passwd }}' SUPERUSER;"
-  changed_when: false
+# - name: Create user in Scylla
+#   command: >
+#     cqlsh -u cassandra -p cassandra '{{ target_host_info.ansible_facts.ansible_default_ipv4.address }}' -e
+#     "CREATE USER '{{ username }}' WITH PASSWORD '{{ passwd }}' SUPERUSER;"
+#   changed_when: false
 
-- name: Create key in Scylla
-  command: >
-    cqlsh -u cassandra -p cassandra '{{ target_host_info.ansible_facts.ansible_default_ipv4.address }}' -e
-    "CREATE KEYSPACE {{ keyname }} WITH replication = {'class':'SimpleStrategy', 'replication_factor':3};"
-  changed_when: false
+# - name: Create key in Scylla
+#   command: >
+#     cqlsh -u cassandra -p cassandra '{{ target_host_info.ansible_facts.ansible_default_ipv4.address }}' -e
+#     "CREATE KEYSPACE {{ keyname }} WITH replication = {'class':'SimpleStrategy', 'replication_factor':3};"
+#   changed_when: false
 ...
