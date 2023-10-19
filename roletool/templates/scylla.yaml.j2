@@ -85,7 +85,7 @@ seed_provider:
           # In an existing cluster, specify the address of at least one existing node.
           # If you specify addresses of more than one node, use a comma to separate them.
           # For example: "<IP1>,<IP2>,<IP3>"
-          - seeds: '{{ target_host_info.ansible_facts.ansible_default_ipv4.address }}'
+          - seeds: {{ discovery_nodes }}
 #"127.0.0.1"
 
 # Address to bind to and tell other Scylla nodes to connect to.
@@ -223,7 +223,7 @@ rpc_port: 9160
 api_port: 10000
 
 # IP for the REST API server
-api_address: 127.0.0.1
+api_address: '{{ target_host_info.ansible_facts.ansible_default_ipv4.address }}'
 
 # Log WARN on any batch size exceeding this value. 128 kiB per batch by default.
 # Caution should be taken on increasing the size of this threshold as it can lead to node instability.
