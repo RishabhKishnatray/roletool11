@@ -22,6 +22,8 @@ discovery_nodes: >-
     {% if ip is defined %}
       {{ ips.append(ip) }}
     {% endif %}
+  {% endfor %}
+  {{ ips | join(',') }}"
 
 # scylladb_use_internal_ip: true
 # scylladb_listen_ip: "{% if scylladb_use_internal_ip|bool %}{{ internal_ip }}{% else %}{{ ansible_default_ipv4.address }}{% endif %}"
