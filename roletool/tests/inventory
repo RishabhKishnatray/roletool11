@@ -1,3 +1,5 @@
----
-ansible_user: ubuntu
-ansible_host: 127.0.0.1
+[esm]
+esm1 ansible_host=107.22.154.174 ansible_user=ubuntu ansible_ssh_private_key_file=/home/rishabh/ok/opx.pem
+[es]
+es1 ansible_host=44.201.152.97 ansible_user=ubuntu ansible_ssh_private_key_file=/home/rishabh/ok/opx.pem
+es2 ansible_host=54.211.142.36 ansible_user=ubuntu ansible_ssh_private_key_file=/home/rishabh/ok/opx.pem
