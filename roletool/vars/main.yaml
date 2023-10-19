@@ -13,7 +13,7 @@ username: scylladb4
 passwd: password
 keyname: employee_db
 gpg_key_needed: "{{ not ('d0a112e067426ab2' | keyring(path='/etc/apt/keyrings/scylladb.gpg')) }}"
-es_IP: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+es-IP: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
 
 discovery_nodes: >-
   "{% set ips = [] %}
