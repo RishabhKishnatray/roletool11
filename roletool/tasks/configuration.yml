@@ -13,6 +13,15 @@
   become: true
   notify:
     - Reload systemd
+    
+- name: Check Scylla Server service status
+  systemd:
+    name: scylla-server
+    state: started
+
+- name: Wait for a condition with a 2-minute timeout
+  wait_for:
+    timeout: 120
 
 - name: Create user in Scylla
   command: >
