@@ -13,7 +13,7 @@
   become: true
   notify:
     - Reload systemd
-    
+
 - name: Check Scylla Server service status
   systemd:
     name: scylla-server
