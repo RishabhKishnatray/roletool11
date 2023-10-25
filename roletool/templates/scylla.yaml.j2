@@ -85,7 +85,7 @@ seed_provider:
           # In an existing cluster, specify the address of at least one existing node.
           # If you specify addresses of more than one node, use a comma to separate them.
           # For example: "<IP1>,<IP2>,<IP3>"
-          - seeds: 
+          - seeds: {{ discovery_nodes }}
 #'{{ target_host_info.ansible_facts.ansible_default_ipv4.address }}'
 
 # Address to bind to and tell other Scylla nodes to connect to.
