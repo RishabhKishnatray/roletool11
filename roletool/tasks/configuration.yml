@@ -11,8 +11,16 @@
     group: ubuntu
     mode: '0644'
   become: true
-  notify:
-    - Reload systemd
+  # notify:
+  #   - Reload systemd
+
+# For example: "<IP1>,<IP2>,<IP3>"
+- name: Configure ScyllaDB seeds
+  lineinfile:
+    path: /etc/scylla/scylla.yaml 
+    regexp: '^seeds:'
+    line: "seeds: {% for host in groups['tag_Name_one'] %}{{ hostvars[host].ansible_host }},{% endfor %} {% for host in groups['tag_Name_two'] %}{{ hostvars[host].ansible_host }},{% endfor %} {% for host in groups['tag_Name_three'] %}{{ hostvars[host].ansible_host }}{% endfor %}"
+
 
 - name: Check Scylla Server service status
   systemd:
